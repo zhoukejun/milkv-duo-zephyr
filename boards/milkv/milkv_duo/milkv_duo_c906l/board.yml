@@ -1,0 +1,6 @@
+board:
+  name: milkv_duo_c906l
+  vendor: milkv
+  socs:
+    - name: cv1800b
+
