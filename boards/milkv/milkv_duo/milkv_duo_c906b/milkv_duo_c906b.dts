@@ -1,0 +1,45 @@
+/*
+ * Copyright (c) 2023 ZHOU Kejun <zhoukejun@outlook.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <mem.h>
+#include <sophgo/cv180xb-c906b.dtsi>
+
+/ {
+	model = "Milk-V DUO";
+	compatible = "milkv-duo";
+	chosen {
+		zephyr,sram = &sram;
+		zephyr,console = &uart4;
+		zephyr,shell-uart = &uart4;
+	};
+
+	soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		sram: memory@80000000 {
+			compatible = "mmio-sram";
+			reg = <0x80000000 DT_SIZE_M(64)>;
+		};
+	};
+};
+
+
+&uart0 {
+	current-speed = <115200>;
+	status = "disabled";
+};
+
+&uart1 {
+	current-speed = <115200>;
+	status = "disabled";
+};
+
+&uart4 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
