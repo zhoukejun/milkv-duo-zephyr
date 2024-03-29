@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: T-Head C906L RISC-V CPU
+
+compatible: "thead,c906l"
+
+include: riscv,cpus.yaml
