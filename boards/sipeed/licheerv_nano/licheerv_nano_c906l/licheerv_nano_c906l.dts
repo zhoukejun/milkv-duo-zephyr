@@ -1,0 +1,35 @@
+/*
+ * Copyright (c) 2023 ZHOU Kejun <zhoukejun@outlook.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <mem.h>
+#include <sophgo/sg200x-c906l.dtsi>
+
+/ {
+	model = "LicheeRV Nano";
+	compatible = "licheerv_nano";
+	chosen {
+		zephyr,sram = &sram;
+		zephyr,console = &uart3;
+		zephyr,shell-uart = &uart3;
+	};
+
+	soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		sram: memory@83F40000 {
+			compatible = "mmio-sram";
+			reg = <0x83F40000 DT_SIZE_K(768)>;
+		};
+	};
+};
+
+
+&uart3 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
