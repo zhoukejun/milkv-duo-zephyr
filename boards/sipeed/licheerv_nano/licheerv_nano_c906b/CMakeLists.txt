@@ -1,5 +1,4 @@
 # Copyright (c) 2024 ZHOU Kejun <zhoukejun@outlook.com>
 # SPDX-License-Identifier: Apache-2.0
 
-config BOARD_LICHEERV_NANO_C906B
-	select SOC_SG2002_C906B
+zephyr_library_sources(pinmux.c)
