@@ -31,6 +31,46 @@
 			reg = <0x3001000 DT_SIZE_K(4)>;
 		};
 
+		gpio0: gpio@3020000 {
+			compatible = "snps,designware-gpio";
+			reg = <0x03020000 DT_SIZE_K(4)>;
+			interrupt-parent = <&plic>;
+			interrupts = <60 1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+
+		gpio1: gpio@3021000 {
+			compatible = "snps,designware-gpio";
+			reg = <0x03021000 DT_SIZE_K(4)>;
+			interrupt-parent = <&plic>;
+			interrupts = <61 1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+
+		gpio2: gpio@3022000 {
+			compatible = "snps,designware-gpio";
+			reg = <0x03022000 DT_SIZE_K(4)>;
+			interrupt-parent = <&plic>;
+			interrupts = <62 1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+
+		gpio3: gpio@3023000 {
+			compatible = "snps,designware-gpio";
+			reg = <0x03023000 DT_SIZE_K(4)>;
+			interrupt-parent = <&plic>;
+			interrupts = <63 1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+
 		uart0:  serial@4140000 {
 			compatible = "ns16550";
 			reg = <0x04140000 DT_SIZE_K(64)>;
