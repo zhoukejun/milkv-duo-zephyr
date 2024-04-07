@@ -1,0 +1,5 @@
+board:
+  name: milkv_duo256m_c906l
+  vendor: milkv
+  socs:
+    - name: sg2002
