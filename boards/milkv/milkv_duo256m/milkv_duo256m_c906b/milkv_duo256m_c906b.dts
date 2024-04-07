@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2023 ZHOU Kejun <zhoukejun@outlook.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <mem.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <sophgo/sg200x-c906b.dtsi>
+#include "milkv_duo256m_c906b-pinctrl.dtsi"
+
+/ {
+
+	model = "Milkv_Duo256M";
+	compatible = "milkv_duo256m";
+	chosen {
+		zephyr,sram = &sram;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		user_led: led {
+			gpios = <&pwr_gpio 2 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		sram: memory@80000000 {
+			compatible = "mmio-sram";
+			reg = <0x80000000 DT_SIZE_M(256)>;
+		};
+	};
+
+        aliases {
+		led0 = &user_led;
+	};
+};
+
+&pwr_gpio {
+	status = "okay";
+};
+
+&uart0 {
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_tx_default &uart0_rx_default>;
+	pinctrl-names = "default";
+	status = "okay";
+};
+
+&uart2 {
+	current-speed = <115200>;
+	pinctrl-0 = <&uart2_tx_default &uart2_rx_default>;
+	pinctrl-names = "default";
+	status = "disabled";
+};
+
+&uart3 {
+	current-speed = <115200>;
+	pinctrl-0 = <&uart3_tx_default &uart3_rx_default>;
+	pinctrl-names = "default";
+	status = "disabled";
+};
+

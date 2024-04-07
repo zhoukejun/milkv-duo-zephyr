@@ -1,0 +1,11 @@
+identifier: milkv_duo256m_c906b
+name: MilkV Duo256M (C906B)
+type: mcu
+arch: riscv64
+toolchain:
+  - unkown
+  - cross-compile
+ram: 256MB DDR2
+supported:
+  - interrupt-controller
+  - serial
