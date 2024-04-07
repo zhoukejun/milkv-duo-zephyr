@@ -71,6 +71,16 @@
 			status = "disabled";
 		};
 
+		pwr_gpio: gpio@5021000 {
+			compatible = "snps,designware-gpio";
+			reg = <0x05021000 DT_SIZE_K(4)>;
+			interrupt-parent = <&plic>;
+			interrupts = <70 1>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			status = "disabled";
+		};
+
 		uart0:  serial@4140000 {
 			compatible = "ns16550";
 			reg = <0x04140000 DT_SIZE_K(64)>;
