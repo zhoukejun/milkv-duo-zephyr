@@ -28,6 +28,20 @@
 		#address-cells = <1>;
 		#size-cells = <1>;
 
+		osc: oscillator {
+			#clock-cells = <0>;
+			compatible = "fixed-clock";
+			clock-frequency = <25000000>;
+		};
+
+		clk: clock-controller@3002000 {
+			compatible = "sophgo,sg200x-clock";
+			reg = <0x03002000 DT_SIZE_K(4)>;
+			clocks = <&osc>;
+			clock-names = "clk";
+			#clock-cells = <1>;
+		};
+
 		rst: reset-controller@3003000 {
 			#reset-cells = <1>;
 			compatible = "sophgo,sg200x-reset";
