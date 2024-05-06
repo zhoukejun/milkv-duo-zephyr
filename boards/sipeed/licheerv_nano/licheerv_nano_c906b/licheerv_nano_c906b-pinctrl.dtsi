@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 ZHOU Kejun <zhoukejun@outlook.com>
+ * Copyright (c) 2024 Kejun Zhou <zhoukejun@outlook.com>
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -29,6 +29,15 @@
 
 	uart3_rx_default: uart3_rx_default {
 		pinmux = <SG200X_PIN_FUNC(SD1_D1, UART3_RX)>;
+	};
+
+	//I2C
+	i2c4_scl_default: i2c4_scl_default {
+		pinmux = <SG200X_PIN_FUNC(PWR_WAKEUP0, IIC4_SCL)>;
+	};
+
+	i2c4_sda_default: i2c4_sda_default {
+		pinmux = <SG200X_PIN_FUNC(PWR_BUTTON1, IIC4_SDA)>;
 	};
 };
 
