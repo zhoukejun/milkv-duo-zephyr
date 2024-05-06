@@ -118,6 +118,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <44 1>;
+			interrupt-names = "uart0";
 			resets = <&rst ID_RESET_X_UART0>;
 			status = "disabled";
 		};
@@ -129,6 +130,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <45 1>;
+			interrupt-names = "uart1";
 			resets = <&rst ID_RESET_X_UART1>;
 			status = "disabled";
 		};
@@ -140,6 +142,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <46 1>;
+			interrupt-names = "uart2";
 			resets = <&rst ID_RESET_X_UART2>;
 			status = "disabled";
 		};
@@ -151,6 +154,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <47 1>;
+			interrupt-names = "uart3";
 			resets = <&rst ID_RESET_X_UART3>;
 			status = "disabled";
 		};
@@ -162,6 +166,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <48 1>;
+			interrupt-names = "uart4";
 			resets = <&rst ID_RESET_X_UART4>;
 			status = "disabled";
 		};
