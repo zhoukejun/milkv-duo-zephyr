@@ -1,5 +1,6 @@
 #include <freq.h>
 #include <mem.h>
+#include <zephyr/dt-bindings/reset/sophgo_sg200x_reset.h>
 
 /dts-v1/;
 
@@ -25,6 +26,35 @@
 	soc {
 		#address-cells = <1>;
 		#size-cells = <1>;
+
+		rst: reset-controller@3003000 {
+			#reset-cells = <1>;
+			compatible = "sophgo,sg200x-reset";
+			reg = <0x03003000 0x24>;
+			status = "okay";
+		};
+
+		sram: memory@80000000 {
+			compatible = "mmio-sram";
+			reg = <0x80000000 DT_SIZE_M(256)>;
+		};
+
+		plic: interrupt-controller@70000000 {
+			compatible = "sifive,plic-1.0.0";
+			#address-cells = <0>;
+			#interrupt-cells = <2>;
+			interrupt-controller;
+			interrupts-extended = <&hlic 11 &hlic 9>;
+			reg = <0x70000000 0x04000000>;
+			riscv,max-priority = <7>;
+			riscv,ndev = <101>;
+		};
+
+		systick: systick@74000000 {
+			compatible = "thead,machine-timer";
+			reg = <0x74000000 0x10000>;
+			interrupts-extended = <&hlic 7>;
+		};
 
 		pinctrl: pin-controller@3001000 {
 			compatible = "sophgo,pinctrl";
@@ -88,6 +118,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <44 1>;
+			resets = <&rst ID_RESET_X_UART0>;
 			status = "disabled";
 		};
 
@@ -98,6 +129,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <45 1>;
+			resets = <&rst ID_RESET_X_UART1>;
 			status = "disabled";
 		};
 
@@ -108,6 +140,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <46 1>;
+			resets = <&rst ID_RESET_X_UART2>;
 			status = "disabled";
 		};
 	
@@ -118,6 +151,7 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <47 1>;
+			resets = <&rst ID_RESET_X_UART3>;
 			status = "disabled";
 		};
 
@@ -128,24 +162,8 @@
 			clock-frequency = <25000000>;
 			interrupt-parent = <&plic>;
 			interrupts = <48 1>;
+			resets = <&rst ID_RESET_X_UART4>;
 			status = "disabled";
-		};
-
-		plic: interrupt-controller@70000000 {
-			compatible = "sifive,plic-1.0.0";
-			#address-cells = <0>;
-			#interrupt-cells = <2>;
-			interrupt-controller;
-			interrupts-extended = <&hlic 11 &hlic 9>;
-			reg = <0x70000000 0x04000000>;
-			riscv,max-priority = <7>;
-			riscv,ndev = <101>;
-		};
-
-		systick: systick@74000000 {
-			compatible = "thead,machine-timer";
-			reg = <0x74000000 0x10000>;
-			interrupts-extended = <&hlic 7>;
 		};
 
 	};
