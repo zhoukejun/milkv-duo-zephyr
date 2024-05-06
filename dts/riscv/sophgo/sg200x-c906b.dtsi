@@ -1,5 +1,6 @@
 #include <freq.h>
 #include <mem.h>
+#include <zephyr/dt-bindings/i2c/i2c.h>
 #include <zephyr/dt-bindings/reset/sophgo_sg200x_reset.h>
 
 /dts-v1/;
@@ -171,6 +172,57 @@
 			status = "disabled";
 		};
 
+		i2c0: i2c@4000000 {
+			compatible = "snps,designware-i2c";
+			reg = <0x04000000 DT_SIZE_K(64)>;
+			interrupt-parent = <&plic>;
+			interrupts = <49 1>;
+			interrupt-names = "i2c0";
+		//	resets = <&rst ID_RESET_X_I2C0>;
+			status = "disabled";
+		};
+
+		i2c1: i2c@4010000 {
+			compatible = "snps,designware-i2c";
+			reg = <0x04010000 DT_SIZE_K(64)>;
+			interrupt-parent = <&plic>;
+			interrupts = <50 1>;
+			interrupt-names = "i2c1";
+		//	resets = <&rst ID_RESET_X_I2C1>;
+			status = "disabled";
+		};
+
+		i2c2: i2c@4020000 {
+			compatible = "snps,designware-i2c";
+			reg = <0x04020000 DT_SIZE_K(64)>;
+			interrupt-parent = <&plic>;
+			interrupts = <51 1>;
+			interrupt-names = "i2c2";
+		//	resets = <&rst ID_RESET_X_I2C2>;
+			status = "disabled";
+		};
+
+		i2c3: i2c@4030000 {
+			compatible = "snps,designware-i2c";
+			reg = <0x04030000 DT_SIZE_K(64)>;
+			interrupt-parent = <&plic>;
+			interrupts = <52 1>;
+			interrupt-names = "i2c3";
+		//	resets = <&rst ID_RESET_X_I2C3>;
+			status = "disabled";
+		};
+
+		i2c4: i2c@4040000 {
+			compatible = "snps,designware-i2c";
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+			reg = <0x04040000 DT_SIZE_K(64)>;
+			interrupt-parent = <&plic>;
+			interrupts = <53 1>;
+			interrupt-names = "i2c4";
+		//	resets = <&rst ID_RESET_X_I2C4>;
+			status = "disabled";
+		};
 	};
 };
 
